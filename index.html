@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studyflow | Premium Class 10 CBSE NCERT Notes</title>
+    <style>
+        :root {
+            --brand-primary: #0f172a;
+            --brand-accent: #2563eb;
+            --brand-success: #10b981;
+            --bg-light: #f8fafc;
+            --surface-white: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        /* Top Header Navigation */
+        .navbar {
+            background-color: var(--brand-primary);
+            color: var(--surface-white);
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-md);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .brand span {
+            color: #60a5fa;
+        }
+
+        .badge-admin {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Hero banner section */
+        .hero {
+            background: linear-gradient(185deg, var(--brand-primary) 0%, #1e3a8a 100%);
+            color: var(--surface-white);
+            padding: 4rem 2rem 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            color: #93c5fd;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Dashboard Wrapper Layout */
+        .dashboard {
+            max-width: 1200px;
+            margin: -2.5rem auto 4rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Navigation Subject Tabs */
+        .subject-tabs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .tab-btn {
+            background: var(--surface-white);
+            border: 1px solid var(--border-color);
+            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .tab-btn .icon {
+            font-size: 2rem;
+        }
+
+        .tab-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--brand-accent);
+        }
+
+        .tab-btn.active {
+            background-color: var(--brand-accent);
+            color: var(--surface-white);
+            border-color: var(--brand-accent);
+        }
+
+        /* Main Syllabus Dashboard Lists */
+        .syllabus-container {
+            background: var(--surface-white);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .subject-panel {
+            display: none;
+        }
+
+        .subject-panel.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--bg-light);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .panel-header h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .chapter-count {
+            background-color: var(--bg-light);
+            color: var(--brand-accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        /* Chapter Cards styling Grid */
+        .chapter-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .chapter-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background-color: var(--surface-white);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .chapter-row:hover {
+            border-color: var(--brand-accent);
+            background-color: #f0f6ff;
+            transform: translateX(4px);
+        }
+
+        .chapter-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .chapter-number {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--brand-accent);
+            background-color: #eff6ff;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        .chapter-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .action-indicator {
+            color: var(--brand-accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* Interactive Note Drawer Overlay Panel */
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 200;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .drawer-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .note-drawer {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 650px;
+            height: 100%;
+            background: var(--surface-white);
+            z-index: 201;
+            box-shadow: -4px 0 25px rgba(0,0,0,0.15);
+            transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .drawer-overlay.open .note-drawer {
+            right: 0;
+        }
+
+        .drawer-header {
+            padding: 1.5rem;
+            background-color: var(--brand-primary);
+            color: var(--surface-white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-drawer {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            font-size: 1.25rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .drawer-body {
+            padding: 2rem 1.5rem;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        /* Note Component Blueprints inside Drawer */
+        .note-placeholder {
+            text-align: center;
+            padding: 3rem 1rem;
+            border: 2px dashed var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-muted);
+        }
+
+        .note-section {
+            margin-bottom: 2rem;
+        }
+
+        .note-section h4 {
+            color: var(--brand-accent);
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid var(--brand-accent);
+            padding-left: 0.5rem;
+        }
+
+        .concept-box {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1rem;
+        }
+
+        .concept-box strong {
+            color: var(--brand-primary);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Mobile Breakpoints */
+        @media(max-width: 768px) {
+            .subject-tabs {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero h1 { font-size: 2rem; }
+            .syllabus-container { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
